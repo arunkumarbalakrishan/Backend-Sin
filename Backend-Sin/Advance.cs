@@ -73,3 +73,16 @@ public class Dog : Animals
 // in this Dog list is Covariance it IEnumerable supports covariance (out T)
 // in this Action Animals is Contravariance its Assigning to Dog delegate
 #endregion
+public class Events
+{
+    public delegate void ProcessCompletedHandler();
+
+    public event ProcessCompletedHandler ProcessCompleted;
+
+    public void StartProcess()
+    {
+        Console.WriteLine("Process Started");
+
+        ProcessCompleted?.Invoke();
+    }
+}
