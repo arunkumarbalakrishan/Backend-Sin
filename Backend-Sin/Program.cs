@@ -77,8 +77,14 @@ public class Program
         string name = "Arun";
 
         string result = name.ToupperFirst();
+       
 
         Console.WriteLine(result);
+
+       DateTime today = DateTime.Now;
+        DataExtensions.IsWeekend(today);
+
+        Console.WriteLine(today.IsWeekend());
 
         }
     }
