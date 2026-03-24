@@ -1,4 +1,6 @@
-﻿using System.Runtime.CompilerServices;
+﻿using Backend_Sin;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using static Backend_Sin.Advance;
 using static Program;
 
@@ -36,10 +38,25 @@ public class Program
 
         dogHandler(dog);
 
-    }
+        static void HandleAnimal(Animals animal)
+        {
+            Console.WriteLine("Handling animal: " + animal.Name);
+        }
 
-    static void HandleAnimal(Animals animal)
-    {
-        Console.WriteLine("Handling animal: " + animal.Name);
+        Events events = new Events();
+        events.ProcessCompleted += Email;
+        events.ProcessCompleted += SMS;
+
+        events.StartProcess();
+
+        static void Email()
+        {
+            Console.WriteLine("The Email has been Send");
+        }
+        static void SMS()
+        {
+            Console.WriteLine("The SMS has been send");
+        }
+     
     }
 }
