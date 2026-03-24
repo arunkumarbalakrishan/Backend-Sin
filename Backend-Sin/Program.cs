@@ -72,5 +72,13 @@ public class Program
             {
                 Console.WriteLine("Caught: " + ex.Message);
             }
+        // This is part of the Extenion method
+
+        string name = "Arun";
+
+        string result = name.ToupperFirst();
+
+        Console.WriteLine(result);
+
         }
     }
