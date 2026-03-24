@@ -155,3 +155,17 @@ public class Box
 }
 
 #endregion
+
+#region This is Base for Extension Method
+
+public static class StringExtensions
+{
+    public  static string ToupperFirst (this string value)
+    {
+        if (string.IsNullOrEmpty(value))
+            return value;
+
+        return char.ToUpper(value[0]) + value.Substring(1);
+    }
+}
+#endregion
