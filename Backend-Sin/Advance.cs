@@ -169,3 +169,18 @@ public static class StringExtensions
     }
 }
 #endregion
+#region
+// other eg for extension method 
+
+public static class DataExtensions
+{
+    public static bool IsWeekend(this DateTime date)
+    {
+        return date.DayOfWeek == DayOfWeek.Saturday ||
+               date.DayOfWeek == DayOfWeek.Sunday;
+    }
+}
+
+
+
+#endregion
