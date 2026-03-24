@@ -1,7 +1,10 @@
 ﻿using Backend_Sin;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+using System.Xml;
 using static Backend_Sin.Advance;
+using static Box;
 using static Program;
 
 public class Program
@@ -57,6 +60,17 @@ public class Program
         {
             Console.WriteLine("The SMS has been send");
         }
-     
+
+         Box box = new Box();
+         box.Method();
+
+            try
+            {
+                Box.AgeException.ValidateAge(-5);
+            }
+            catch (AgeException ex)
+            {
+                Console.WriteLine("Caught: " + ex.Message);
+            }
+        }
     }
-}
