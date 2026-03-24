@@ -36,17 +36,9 @@ namespace Backend_Sin
 
                 public static void LogToFile(string msg)
                 {
-                    System.IO.File.AppendAllText("log.txt", msg + "\n");
+                    File.AppendAllText("log.txt", msg + "\n");
                 }
-            }
-          public static void Mains(string[] args) // I Just Change that name for runs
-          {
-                OrderService service = new OrderService();
-
-                service.PlaceOrder("Laptop", Logger.LogToConsole);
-
-                service.PlaceOrder("Phone", Logger.LogToFile);
-          }
+            }        
      }
   }
 #endregion
@@ -73,6 +65,8 @@ public class Dog : Animals
 // in this Dog list is Covariance it IEnumerable supports covariance (out T)
 // in this Action Animals is Contravariance its Assigning to Dog delegate
 #endregion
+
+#region
 public class Events
 {
     public delegate void ProcessCompletedHandler();
@@ -86,3 +80,4 @@ public class Events
         ProcessCompleted?.Invoke();
     }
 }
+#endregion
