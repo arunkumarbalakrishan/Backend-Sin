@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using static Box;
+using static System.Reflection.Metadata.BlobBuilder;
 
 namespace Backend_Sin
 {
@@ -66,7 +68,7 @@ public class Dog : Animals
 // in this Action Animals is Contravariance its Assigning to Dog delegate
 #endregion
 
-#region
+#region Events
 public class Events
 {
     public delegate void ProcessCompletedHandler();
@@ -80,4 +82,76 @@ public class Events
         ProcessCompleted?.Invoke();
     }
 }
+#endregion
+#region 
+//Exception Handling
+//Exception Handling is a mechanism to gracefully handle runtime errors so that the normal flow of a program isn't disrupted
+
+// eg for exception handling
+public class Box
+{
+    public int Number { get; set; }
+
+    public void Method()
+    {
+        try
+        {
+            int a = 10;
+            int b = 0;
+
+            int result = a / b;
+            Console.WriteLine(result);
+
+        }
+        catch (DivideByZeroException ex)
+        {
+            Console.WriteLine("Error: Cannot divide by zero!");
+            Console.WriteLine(ex.Message);
+        }
+        finally
+        {
+            Console.WriteLine("This always runs.");
+        }
+
+        //Multiple Catch Blocks
+        try
+        {
+            string input = null;
+            int number = int.Parse(input);
+        }
+        catch (FormatException ex)
+        {
+            Console.WriteLine("invailed Message" + ex.Message);
+        }
+        catch (ArgumentNullException ex)
+        {
+            Console.WriteLine("Input was Null " + ex.Message);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("unExcepted Error" + ex.Message);
+        }
+
+    }
+    // Customer expection Handling
+    public class AgeException : Exception
+    {     
+        public AgeException(string message) : base(message)
+        {
+
+        }
+ 
+        public static void ValidateAge(int age)
+        {
+            if (age < 0 || age > 150)
+            {
+                throw new AgeException($"Invalid age: {age}");
+            }
+
+            Console.WriteLine($"Valid age: {age}");
+        }
+    }
+
+}
+
 #endregion
