@@ -86,5 +86,11 @@ public class Program
 
         Console.WriteLine(today.IsWeekend());
 
-        }
+        CollectionExample collectionway = new CollectionExample();
+        collectionway.Display();
+        collectionway.Dictionaryway();
+        collectionway.EgHashset();
+        collectionway.egStack();
+
     }
+}

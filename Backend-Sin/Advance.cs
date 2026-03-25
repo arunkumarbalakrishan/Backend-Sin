@@ -49,7 +49,7 @@ namespace Backend_Sin
 
 public class Animals
 {
-    public string Name { get; set; }
+    public string? Name { get; set; }
 
     public void Eat()
     {
@@ -73,7 +73,7 @@ public class Events
 {
     public delegate void ProcessCompletedHandler();
 
-    public event ProcessCompletedHandler ProcessCompleted;
+    public event ProcessCompletedHandler? ProcessCompleted;
 
     public void StartProcess()
     {
@@ -116,7 +116,7 @@ public class Box
         //Multiple Catch Blocks
         try
         {
-            string input = null;
+            string? input = null;
             int number = int.Parse(input);
         }
         catch (FormatException ex)
@@ -131,7 +131,6 @@ public class Box
         {
             Console.WriteLine("unExcepted Error" + ex.Message);
         }
-
     }
     // Customer expection Handling
     public class AgeException : Exception
@@ -183,4 +182,116 @@ public static class DataExtensions
 
 
 
+#endregion
+
+#region
+
+public class Collection
+{
+    //Collections are data structures that store multiple items.
+    //they provide various ways to organize, access and manipulate data.
+    //Collections can be categorized into several types, including:
+    //-----------------------------------------------------------------------------//
+    //1. Lists: Ordered collections that allow duplicate elements. Example: List<T>.
+    //2. Dictionaries: Collections of key-value pairs, where each key is unique. Example: Dictionary<TKey, TValue>.
+    //3. Sets: Collections of unique elements. Example: HashSet<T>.
+    //4. Queues: First-in, first-out (FIFO) collections. Example: Queue<T>.
+    //5. Stacks: Last-in, first-out (LIFO) collections. Example: Stack<T>.
+    //6. Arrays: Fixed-size collections of elements of the same type. Example: T[].
+    //Collections provide methods for adding, removing, and accessing elements, as well as iterating through the collection.
+    //They are fundamental for managing data in programming and are widely used in various applications.
+
+    public string? Name { get; set; }
+    public string? Infomation { get; set; }
+    public int Salary { get; set; }
+
+}
+
+public class CollectionExample
+{
+    //Example of using a List collection
+    public void Display()
+    {
+
+        List<Collection> collection = new List<Collection>
+        {
+            new Collection { Name = "Arun", Infomation = "Software Developer", Salary = 50000 },
+            new Collection { Name = "Jai", Infomation = "Data Analyst", Salary = 45000 },
+            new Collection { Name = "foureyes", Infomation = "Project Manager", Salary = 60000 }
+        };
+        foreach (var item in collection)
+        {
+            Console.WriteLine($"Name: {item.Name}, Infomation: {item.Infomation}, Salary: {item.Salary}");
+        }
+    }
+
+    //Example of using a Dictionary collection
+
+    public void Dictionaryway()
+    {
+        Dictionary<int, Collection> employeeDictionary = new Dictionary<int, Collection>();
+        employeeDictionary.Add(
+           1, new Collection
+           {
+               Name = "Arun",
+               Infomation = "Software Developer",
+               Salary = 1000
+           }
+       );
+        employeeDictionary.Add(
+            2, new Collection
+            {
+                Name = "jai",
+                Infomation = "Data Analyst",
+                Salary = 2000
+            }
+            );
+        employeeDictionary.Add(
+            3, new Collection
+            {
+                Name = "foureyes",
+                Infomation = "Project Manager",
+                Salary = 3000
+            }
+            );
+
+
+        foreach (var item in employeeDictionary)
+        {
+            Console.WriteLine($"key : {item.Key}\n Name : {item.Value.Name} \n Information :{item.Value.Infomation} \n Salary : {item.Value.Salary}");
+        }
+    }
+
+    //Example for Using Hashset<T>
+
+    public void EgHashset()
+    {
+        HashSet<int> uniqueNumber = new() { 1, 2, 3, 2, 1 };
+        Console.WriteLine(uniqueNumber.Count);
+
+        HashSet<string> frnds = new();
+        frnds.Add("arun");
+        frnds.Add("jai");
+        frnds.Add("Arun");
+        frnds.Remove("arun");
+
+
+        Console.WriteLine(frnds.Count);
+    }
+
+    //Example for Using Stack<T>
+
+    public void egStack()
+    {
+        Stack<int> set = new Stack<int>(new[] { 1, 2, 3, 4, 5 });
+        set.Push(6);    // Add an element to the top of the stack
+        set.Pop();      // Remove and return the top element (6)
+        set.Peek();     // Return the top element without removing it (5)
+
+        foreach (var item in set)
+        {
+            Console.WriteLine(item);
+        }
+    }
+}
 #endregion
