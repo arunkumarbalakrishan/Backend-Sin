@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using System.Xml;
 using static Backend_Sin.Advance;
 using static Box;
+using static CollectionExample;
 using static Program;
 
 public class Program
@@ -92,5 +93,32 @@ public class Program
         collectionway.EgHashset();
         collectionway.egStack();
 
+        Empolyee empolyee = new Empolyee();
+
+        empolyee.max();
+
+        Volume v = new Volume();
+        v.wax();
+
+        Converstion c = new Converstion();
+        MyDelegate del = Converstion.Inbox;
+        var x = del(10);
+        Console.WriteLine(x);
+
+        MyEvent ec = new MyEvent();
+        ec.Process += unneed;
+        ec.StartMessage();
+
+        Does d = new Does();
+        d.wait();
+        d.wait2();
+
+        string value = "Devil";
+        Console.WriteLine(value.AddHello());
     }
+    public static int  unneed(int value)
+    {
+        Console.WriteLine("This is an event");
+        return value +10
+;    }
 }
