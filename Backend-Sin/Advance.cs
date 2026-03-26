@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using static Box;
@@ -292,6 +294,136 @@ public class CollectionExample
         {
             Console.WriteLine(item);
         }
+    }
+
+    // practicing example Code
+    public class Empolyee
+    {
+        public void max()
+        {
+            int[] list = { 1, 2, 3, };
+
+            IEnumerable collection = list;
+
+            foreach (var item in collection)
+            {
+                Console.WriteLine(item);
+            }
+
+        }
+    }
+
+    public class Volume
+    {
+        public void wax()
+        {
+            ArrayList list = new ArrayList() { 1, 2, 3 };
+
+            list.Add("arun");
+            if (list.Count > 3 )
+            {
+                Console.WriteLine(true);
+            }
+            else
+            {
+                Console.WriteLine(false);
+            };
+            list.Add(4);
+            list.Add(11.22);
+
+            foreach (var item in list)
+            {
+                Console.WriteLine(item);
+            }
+        }
+    }
+    public delegate int MyDelegate(int x);
+   
+    
+    public class Converstion
+    {
+
+        public static int Inbox(int x)
+        {
+            
+            return x + 10;   
+            
+        }
+    }
+
+    public class MyEvent
+    {
+        public event MyDelegate? Process;
+
+        public void StartMessage ()
+        {
+            if (Process != null)
+            {
+                int x = Process(5);
+                Console.WriteLine("Result: " + x);
+            }
+        }
+    }
+
+    public class Does
+    {
+        public void wait()
+        {
+            try
+            {
+                List<int> list = new List<int>();
+                list.Add(1);
+                list.Add(2);
+                list.Add(3);
+                list.Add(4);
+                if (list.Count < 4)
+                {
+                    list.Reverse();
+                }
+                else
+                {
+                    list.Sort();
+                }
+                //throw new Exception("Manual error"); ==> for testing the catch block
+
+                Console.WriteLine(string.Join(", ", list));
+               
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("An error occurred: " + ex.Message);
+            }
+        }
+
+        public void wait2()
+        {
+            try
+            {
+                int? store = null;
+
+                if (store.HasValue)
+                {
+                    Console.WriteLine("Value: " + store.Value);
+
+                }
+                else
+                {
+                    Console.WriteLine("No value assigned.");
+                }
+            }
+            catch
+            {
+                Console.WriteLine("An error occurred while accessing the nullable variable.");
+            }
+        }
+    }
+    
+  }
+public static class ExtensionMethod
+{
+    public static string AddHello(this string value)
+    {
+        return "Hello" + value;
     }
 }
 #endregion
