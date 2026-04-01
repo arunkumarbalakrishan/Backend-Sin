@@ -12,6 +12,17 @@ public class Program
 {
     public static void Main(string[] args)
     {
+        Console.WriteLine("Enter Your Vaild Number");
+
+        if (int.TryParse(Console.ReadLine(), out int number))
+        {
+            Console.WriteLine("You entered: " + number);
+        }
+        else
+        {
+            Console.WriteLine("Invalid input. Please enter a valid number.");
+        }
+
 
         OrderService service = new OrderService();
 
@@ -110,15 +121,20 @@ public class Program
         ec.StartMessage();
 
         Does d = new Does();
-        d.wait();
-        d.wait2();
+        d.Wait();
+        d.Wait2();
+
+        MadMan made = new MadMan();
+        made.Methor(made.NameWords, made.ValuesWords, result);
 
         string value = "Devil";
         Console.WriteLine(value.AddHello());
     }
-    public static int  unneed(int value)
+    public static int unneed(int value)
     {
         Console.WriteLine("This is an event");
-        return value +10
-;    }
+        return value + 10;
+    }
+
+
 }

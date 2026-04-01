@@ -119,7 +119,8 @@ public class Box
         try
         {
             string? input = null;
-            int number = int.Parse(input);
+            //int number = int.Parse(input);
+            int number = int.TryParse(input, out int result) ? result : throw new FormatException("Input is not a valid number.");
         }
         catch (FormatException ex)
         {
@@ -367,7 +368,7 @@ public class CollectionExample
 
     public class Does
     {
-        public void wait()
+        public void Wait()
         {
             try
             {
@@ -395,7 +396,7 @@ public class CollectionExample
             }
         }
 
-        public void wait2()
+        public void Wait2()
         {
             try
             {
@@ -426,4 +427,42 @@ public static class ExtensionMethod
         return "Hello" + value;
     }
 }
+#endregion
+
+
+#region
+public class MadMan
+{
+   public string NameWords { get; set; } =string.Empty;
+    public int ValuesWords { get; set; } = 0;
+
+    public string Discrision {  get; set; } = string.Empty;
+    public void Methor(string NameWords, int ValuesWords, string Discrision)
+    {
+        List<MadMan> man = new List<MadMan>();
+        man.Add(new MadMan
+        {
+            NameWords =" Wow its Amazing",
+            ValuesWords = 12345,
+            Discrision = "take it as far its goes"
+
+        });
+
+        if (MadMan.Equals == man.Chunk)
+        {
+            Console.WriteLine($"the value is {NameWords}and worth it");
+
+        }
+        else
+        {
+            Console.WriteLine($"the value is {ValuesWords} and Not worth it");
+        }
+
+        var Result = man.ToList();
+        Console.WriteLine(man.Count);
+
+    }
+}
+
+
 #endregion
