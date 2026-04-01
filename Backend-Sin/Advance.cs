@@ -466,3 +466,38 @@ public class MadMan
 
 
 #endregion
+
+#region
+
+// hashTable is a collection that stores key-value pairs, where each key is unique.
+// It uses a hash function to compute an index into an array of buckets or slots, from which the desired value can be found.
+// Hash tables provide fast insertion, deletion, and retrieval of values based on their keys.
+// They are commonly used for implementing dictionaries, caches, and sets in programming languages.
+
+// Eg for Hashtable
+class Mana
+{
+    public void ManaMethod()
+    {
+        Hashtable name = new Hashtable();
+        name.Add(2, 1);
+        name.Add(3, 2);
+
+        foreach (var item in name)
+        {
+            Console.WriteLine(item);
+        }
+
+        // First or Default Example
+
+        List<int> ints = new List<int>();
+       
+
+        var a = ints.First(); // its thowing expection because without the value it.
+        var b = ints.FirstOrDefault(); // its not throwing expection because its giving default value of int which is 0
+
+       
+    }
+    
+}
+#endregion

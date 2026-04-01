@@ -6,7 +6,7 @@ using System.Xml;
 using static Backend_Sin.Advance;
 using static Box;
 using static CollectionExample;
-using static Program;
+
 
 public class Program
 {
@@ -129,12 +129,18 @@ public class Program
 
         string value = "Devil";
         Console.WriteLine(value.AddHello());
+
+        
+        Mana mana = new Mana();
+        mana.ManaMethod();
+
     }
     public static int unneed(int value)
     {
         Console.WriteLine("This is an event");
         return value + 10;
     }
+    
 
 
 }
