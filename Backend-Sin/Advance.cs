@@ -3,7 +3,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml.Linq;
 using static Box;
+using static CollectionExample;
 using static System.Reflection.Metadata.BlobBuilder;
 
 namespace Backend_Sin
@@ -461,6 +463,44 @@ public class MadMan
         var Result = man.ToList();
         Console.WriteLine(man.Count);
 
+        ArrayList list = new ArrayList()
+        {
+                        10,
+                        "Hello",
+                        20,
+                        "World",
+                        30
+        };
+
+        var matter = list.OfType<String>();
+
+       foreach (var item in matter)
+        {
+            Console.WriteLine(item);
+        }
+
+       Dictionary<int,string> dict = new Dictionary<int, string>()
+       {
+           { 1,"Arun" },
+      
+              { 2,"Jai" },
+              { 3,"foureyes" }
+
+          };
+
+        var dicResult =
+             dict.OrderBy(x => x.Key).ThenBy(x => x.Value);
+       var mate = dict.OrderByDescending(x => x.Key).ThenBy(x => x.Value);
+
+        foreach (var item in dicResult)
+        {
+            Console.WriteLine($"Key: {item.Key}, Value: {item.Value}");
+        }
+        foreach (var i in mate)
+        {
+            Console.WriteLine($"Key: {i.Key}, Value: {i.Value}");
+        }
+        
     }
 }
 
@@ -500,4 +540,129 @@ class Mana
     }
     
 }
+#endregion
+
+#region
+
+class LINQ
+{
+    // Linq stands for Language Intergrated Query, it is allow to used the query syntax to Clean C# code.
+    public void LINQExample()
+    {
+        // EG for LINQ 
+
+        int[] numbers = { 1, 2, 3, 4, 5, 6 };
+
+        List<int> value = new List<int>();
+
+        var result = from num in numbers
+                     where num % 2 == 0
+                     select num;
+
+        // you can also use method syntax for the same query
+
+        var result2 = numbers.Where(num => num % 2 == 0).Select(num => num);
+
+        // this is simple and basic eg for Linq.
+
+        // There are type of way to use Linq like
+        // 1. LINQ to Objects: Querying in-memory collections like arrays, lists, etc.
+        // 2. LINQ to SQL: Querying databases using LINQ syntax.
+        // 3. LINQ to XML: Querying and manipulating XML data.
+        // 4. LINQ to Entities: Querying Entity Framework data models.
+        //5.LINQ to XML: Querying and manipulating XML data using LINQ syntax.
+        //6 PLINQ: Parallel LINQ for parallel processing of data.
+
+        // This are the way we can use in Linq.
+
+        //  Eg for Linq to Objects
+
+        int[] nums = { 1, 2, 3, 4, 5, 6 };
+
+       var result3 = from n in nums
+                    where n > 3
+                    select n;
+        foreach (var item in result3)
+        {
+            Console.WriteLine(item);
+        }
+
+        // Eg for Linq to SQL
+
+        //DataContext db = new DataContext(connectionString); ==> this is just EG for LINQ to SQL.
+
+        //var customers = from c in db.Customers
+        //                where c.City == "Chennai"
+        //                select c;
+
+        //foreach (var c in customers)
+        //{
+        //    Console.WriteLine(c.Name);
+        //}
+
+
+
+        // Eg for Linq to XML
+        // Used to query XML documents.
+
+        //XDocument xml = XDocument.Load("students.xml");
+
+        //var students = from s in xml.Descendants("Student")
+        //               where (int)s.Element("Age") > 20
+        //               select s.Element("Name").Value;
+
+        //foreach (var name in students)
+        //{
+        //    Console.WriteLine(name);
+        //}
+
+
+        // Eg for Linq to Entities
+
+        //var students = context.Students
+        //              .Where(s => s.Age > 18)
+        //              .ToList();
+
+        // This is best way to use Linq to Entities with Entity Framework Core.
+
+
+        // Runs LINQ queries in parallel using multiple CPU cores to improve performance.
+
+        var values = Enumerable.Range(1, 1000000);
+
+        var way = numbers.AsParallel()
+                            .Where(n => n % 2 == 0)
+                            .ToList();
+
+
+
+        //Deferred Execution in LINQ means:
+        //The query is not executed when it is written.
+        //It executes only when the data is actually used (iterated).
+
+
+        int[] ack = { 1, 2, 3, 4, 5 };
+
+        var ep = ack.Where(n => n > 2); // Query is defined but not executed
+
+        Console.WriteLine("This is Query");
+
+        foreach (var yes in ep)
+        {
+            Console.WriteLine(yes);   
+        }
+
+        // This is we can use that deffer execution in LINQ.
+
+        // What happens 
+        // when the create a query 
+        // The query is not executed immediately
+        // when we iterate over the query
+        // The query runs only when the foreach loop starts.
+
+
+
+    }
+}
+
 #endregion
