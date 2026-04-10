@@ -10,7 +10,7 @@ using static CollectionExample;
 
 public class Program
 {
-    public static void Main(string[] args)
+    public static async Task Main(string[] args)
     {
         Console.WriteLine("Enter Your Vaild Number");
 
@@ -73,27 +73,27 @@ public class Program
             Console.WriteLine("The SMS has been send");
         }
 
-         Box box = new Box();
-         box.Method();
+        Box box = new Box();
+        box.Method();
 
-            try
-            {
-                Box.AgeException.ValidateAge(-5);
-            }
-            catch (AgeException ex)
-            {
-                Console.WriteLine("Caught: " + ex.Message);
-            }
+        try
+        {
+            Box.AgeException.ValidateAge(-5);
+        }
+        catch (AgeException ex)
+        {
+            Console.WriteLine("Caught: " + ex.Message);
+        }
         // This is part of the Extenion method
 
         string name = "Arun";
 
         string result = name.ToupperFirst();
-       
+
 
         Console.WriteLine(result);
 
-       DateTime today = DateTime.Now;
+        DateTime today = DateTime.Now;
         DataExtensions.IsWeekend(today);
 
         Console.WriteLine(today.IsWeekend());
@@ -130,9 +130,52 @@ public class Program
         string value = "Devil";
         Console.WriteLine(value.AddHello());
 
-        
+
         Mana mana = new Mana();
         mana.ManaMethod();
+
+        Thread t1 = new Thread(AsyncAwait.Threading);
+        t1.Start(); // Start the worker thread
+
+        for (int i = 1; i <= 5; i++)
+        {
+            Console.WriteLine("Main Thread: " + i);
+            Thread.Sleep(500);
+
+        }
+
+
+       AsynchronousProgramming asyncProg = new AsynchronousProgramming();
+        
+        await asyncProg.Value();
+
+      AnimalsSound sound = new Cats();
+        sound.Sound("","");
+
+        AnimalsSound soundds = new Dogs();
+        soundds.Sound("","");
+
+        Cars kar = new FourWheels();
+        kar.Models();
+        kar.Color("Red");
+
+        Vehicle car = new Car()
+        {
+            Brand = "BMW",
+            Year = 2022,
+            NumberOfDoors = 4
+        };
+
+        Vehicle bike = new Bike()
+        {
+            Brand = "Yamaha",
+            Year = 2021,
+            HasGear = true
+        };
+
+        car.ShowDetails();
+        bike.ShowDetails();
+
 
     }
     public static int unneed(int value)
@@ -140,7 +183,7 @@ public class Program
         Console.WriteLine("This is an event");
         return value + 10;
     }
-    
+
 
 
 }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Xml.Linq;
 using static Box;
@@ -533,8 +534,8 @@ class Mana
         List<int> ints = new List<int>();
        
 
-        var a = ints.First(); // its thowing expection because without the value it.
-        var b = ints.FirstOrDefault(); // its not throwing expection because its giving default value of int which is 0
+        //var a = ints.First(); // its thowing expection because without the value it.
+        //var b = ints.FirstOrDefault(); // its not throwing expection because its giving default value of int which is 0
 
        
     }
@@ -665,4 +666,134 @@ class LINQ
     }
 }
 
+#endregion
+
+#region Async Await
+
+class AsyncAwait
+{
+    // What is CPU?
+    // CPU stands for Central Processing Unit, it is the primary component of a computer that performs most of the processing inside a computer.
+
+    //What is Thread?
+    //A thread is the smallest unit of execution within a process. It allows multiple tasks to run concurrently within the same application.
+
+    //What is thread Scheduler?
+    //A thread scheduler is a component of the operating system that manages the execution of threads.
+    //It determines which thread gets to run and for how long, based on factors like priority and availability of resources.
+
+
+    // Basis Level of Threading in C#
+
+    public static void Threading()
+    {
+            for (int i = 1; i <= 5; i++)
+            {
+                Console.WriteLine("Worker Thread: " + i);
+                Thread.Sleep(500); 
+            }        
+    }
+   
+}
+
+#endregion
+
+#region
+
+class AsynchronousProgramming
+{
+    public async Task Value()
+    {
+       Console.WriteLine("This is for Asynchronous programming");
+
+        await Task.Delay(5000);
+
+        Console.WriteLine("There prgrmming is Running...");
+    }
+   
+}
+
+#endregion
+
+#region
+class AnimalsSound
+{
+    public virtual void Sound(string cat,string Dog)
+    {
+        Console.WriteLine("Animals makes Sound Scarey");
+    }
+
+}
+
+class Cats : AnimalsSound
+{
+
+    public override void Sound(string Cat , string Dog)
+    {
+        Console.WriteLine("The cat is Monuing");
+    }
+}
+
+class Dogs : AnimalsSound
+{
+    public override void Sound(string cat, string Dog)
+    {
+        Console.WriteLine("The Dog is Barking ");
+    }
+}
+
+abstract class Cars
+{
+    public void Models()
+    {
+       	Console.WriteLine("This value exceeds your expectations.");
+    }
+    public abstract void Color(string red);
+}
+
+class FourWheels : Cars
+{
+
+    public override void Color(string red)
+    {
+        Console.WriteLine("This is car has a red color " + red);
+    }
+}
+#endregion
+
+#region
+abstract class Vehicle
+{
+    private string _brand = string.Empty;
+
+    public string Brand
+    {
+        get { return _brand; }
+        set { _brand = value; }
+    }
+
+    public int Year { get; set; }
+    public abstract void ShowDetails();
+
+}
+
+class Car : Vehicle
+{
+    public int NumberOfDoors { get; set; }
+
+    public override void ShowDetails()
+    {
+        Console.WriteLine($"Car Brand: {Brand}, Year: {Year}, Doors: {NumberOfDoors}");
+    }
+}
+
+class Bike : Vehicle
+{
+    public bool HasGear { get; set; }
+
+    public override void ShowDetails()
+    {
+        Console.WriteLine($"Bike Brand: {Brand}, Year: {Year}, Gear: {HasGear}");
+    }
+}
 #endregion
